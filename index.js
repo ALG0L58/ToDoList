@@ -8,6 +8,7 @@ const PORT = process.env.port || config.get('serverPort')
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 app.use("/auth", authRouter)
 
 const start = async() => {
