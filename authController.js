@@ -33,15 +33,38 @@ class authController {
 
     async changeTodo(req, res){
         try {
-            const {title, completed} = req.body
-            await Todo.updateOne(
-                {title: title},
-                {
-                    $set: {
-                        completed: completed
+            const {title, dataChange, select} = req.body
+            if (select == "completed") {
+                await Todo.updateOne(
+                    {title: title},
+                    {
+                        $set: {
+                            completed: dataChange
+                        }
                     }
-                }
-            )
+                )
+            }
+            if(select == "title") {
+                await Todo.updateOne(
+                    {title: title},
+                    {
+                        $set: {
+                            title: dataChange
+                        }
+                    }
+                )
+            }
+            if(select == "important") {
+                await Todo.updateOne(
+                    {title: title},
+                    {
+                        $set: {
+                            important: dataChange
+                        }
+                    }
+                )
+            }
+            
             return res.json({message: 'Task successfully change'})
         } catch (e) {
             console.log(e);
