@@ -1,4 +1,0 @@
-{
-    "serverPort": 5000,
-    "dbUrl": "mongodb+srv://algol58:algol58@todolist.ihjjriz.mongodb.net/?retryWrites=true&w=majority"
-}
