@@ -1,16 +1,15 @@
 const express = require('express')
+require('dotenv').config()
 const mongoose = require('mongoose')
 const cors = require('cors')
 const authRouter = require('./authRouter')
 const PORT = process.env.port || 5000
 
-require('dotenv').config()
-
 const app = express()
 
 app.use(express.json())
 app.use(cors())
-app.use("/auth", authRouter)
+app.use("/api", authRouter)
 
 const start = () => {
     try {
