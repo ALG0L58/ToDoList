@@ -5,6 +5,16 @@ const jwt = require('jsonwebtoken')
 const {validationResult} = require('express-validator')
 
 class userController {
+    async get(req, res) {
+        try {
+            console.log('asdad')
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+
+
     async addUser(req, res) {
         try {
             const errors = validationResult(req)
@@ -19,8 +29,8 @@ class userController {
                 return res.status(400).json({message: `User with email ${email} already exist`})
             }
 
-            const hashPassword = await bcrypt.hash(password, 8)
-            const user = new User({email, password: hashPassword})
+            // const hashPassword = await bcrypt.hash(password, 8)
+            const user = new User({email, password})
             await user.save()
             return res.json({message: 'User successfully added'})
         } catch (e) {
@@ -37,7 +47,7 @@ class userController {
                 return res.status(404).json({message: 'User not found'})
             }
 
-            const isValidPassword = bcrypt.compareSync(password, user.password)
+            const isValidPassword = (password, user.password)
 
             if(!isValidPassword) {
                 return res.status(400).json({message: 'Invalid password'})

@@ -14,6 +14,7 @@ const validation = [
 router.post('/registration', validation, userController.addUser);
 router.post('/login', userController.login);
 router.get('/auth', authMiddleware, userController.auth);
+router.get('/get', userController.get);
 
 //---------- Todos-routes ----------
 router.post('/user/todos', todoController.getTodos);
